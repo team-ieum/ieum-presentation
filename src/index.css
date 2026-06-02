@@ -983,3 +983,39 @@ body, html {
 .closing-slide::after {
     display: none !important;
 }
+
+/* PDF 인쇄 및 내보내기용 스타일 */
+@media print {
+    body, html {
+        overflow: visible !important;
+        height: auto !important;
+        background: white !important;
+    }
+    #presentation-container {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        overflow: visible !important;
+        background: linear-gradient(180deg, #eaf7fe 0%, #ffffff 48%, #f8fcff 100%) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    .slide {
+        position: relative !important;
+        display: flex !important;
+        opacity: 1 !important;
+        transform: scale(1) translateY(0) !important;
+        pointer-events: auto !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        height: 100vh !important;
+        width: 100vw !important;
+        padding: 4% 5% !important;
+        box-sizing: border-box !important;
+    }
+    .controls, .global-waves-container {
+        display: none !important;
+    }
+}
+

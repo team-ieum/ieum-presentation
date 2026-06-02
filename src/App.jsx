@@ -869,11 +869,36 @@ export default function App() {
         </svg>
       </div>
 
-      {/* 슬라이드 이동 컨트롤바 */}
-      <div className="controls progress-only" aria-label="현재 슬라이드 진행 상태">
+      {/* 슬라이드 이동 컨트롤바 (인터랙티브 툴바) */}
+      <div className="controls" aria-label="슬라이드 네비게이션 및 도구">
+        <button 
+          className="control-btn" 
+          onClick={() => setCurrentSlide((prev) => Math.max(prev - 1, 0))}
+          title="이전 슬라이드 (좌향 방향키)"
+        >
+          <i className="fa-solid fa-chevron-left"></i>
+        </button>
+        
         <div className="progress-indicator" id="slide-progress">
           {currentSlide + 1} / {TOTAL_SLIDES}
         </div>
+
+        <button 
+          className="control-btn" 
+          onClick={() => setCurrentSlide((prev) => Math.min(prev + 1, TOTAL_SLIDES - 1))}
+          title="다음 슬라이드 (우향 방향키 / 스페이스바)"
+        >
+          <i className="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <button 
+          className="control-btn" 
+          onClick={() => window.print()}
+          title="PDF 내보내기"
+          style={{ marginLeft: '6px', backgroundColor: '#007ba7' }}
+        >
+          <i className="fa-solid fa-file-pdf"></i>
+        </button>
       </div>
     </div>
   );
