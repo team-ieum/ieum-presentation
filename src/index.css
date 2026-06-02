@@ -1013,6 +1013,9 @@ body, html {
         width: 100vw !important;
         padding: 4% 5% !important;
         box-sizing: border-box !important;
+        background: linear-gradient(180deg, #eaf7fe 0%, #ffffff 48%, #f8fcff 100%) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
     .controls, .global-waves-container {
         display: none !important;

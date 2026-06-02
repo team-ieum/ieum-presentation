@@ -298,22 +298,20 @@ export default function App() {
         </div>
         <div className="slide-body">
           <div className="diagram-container">
-            {currentSlide === 6 && (
-              <MermaidChart chartCode={`
-              flowchart LR
-                  A["회원가입 / 로그인"] --> B["AI API Key 등록"]
-                  B --> C["외부 서비스 연동"]
-                  C --> D["워크플로우 생성"]
-                  D --> E["노드 배치 / 자연어 생성"]
-                  E --> F["저장 및 활성화"]
-                  F --> G["수동 / Webhook / Schedule 실행"]
-                  G --> H["실행 로그 확인"]
-                  H --> E
-                  style A fill:#f3fbff,stroke:#007ba7,stroke-width:2px;
-                  style E fill:#e0f6ff,stroke:#007ba7,stroke-width:2px;
-                  style G fill:#f0fdf4,stroke:#16a34a,stroke-width:2px;
-              `} />
-            )}
+            <MermaidChart chartCode={`
+            flowchart LR
+                A["회원가입 / 로그인"] --> B["AI API Key 등록"]
+                B --> C["외부 서비스 연동"]
+                C --> D["워크플로우 생성"]
+                D --> E["노드 배치 / 자연어 생성"]
+                E --> F["저장 및 활성화"]
+                F --> G["수동 / Webhook / Schedule 실행"]
+                G --> H["실행 로그 확인"]
+                H --> E
+                style A fill:#f3fbff,stroke:#007ba7,stroke-width:2px;
+                style E fill:#e0f6ff,stroke:#007ba7,stroke-width:2px;
+                style G fill:#f0fdf4,stroke:#16a34a,stroke-width:2px;
+            `} />
           </div>
         </div>
         <div className="slide-footer">
@@ -337,23 +335,21 @@ export default function App() {
         </div>
         <div className="slide-body" style={{ flexDirection: 'row', gap: '20px', alignItems: 'stretch' }}>
           <div className="diagram-container" style={{ flex: 1.2 }}>
-            {currentSlide === 7 && (
-              <MermaidChart chartCode={`
-              flowchart TD
-                  A["/ Landing"] --> B["/auth 로그인·회원가입"]
-                  B --> C["/main 대시보드"]
-                  C --> D["/workflow 워크플로우 목록"]
-                  D --> E["/workflow/new 새 캔버스"]
-                  D --> F["/workflow/:workflowId 편집 캔버스"]
-                  C --> G["/inter-setting 통합 설정"]
-                  C --> H["/user 계정 설정"]
-                  E --> I["React Flow Editor"]
-                  F --> I
-                  I --> J["AI Assistant Panel"]
-                  style I fill:#fff7ed,stroke:#ea580c,stroke-width:2px;
-                  style J fill:#f5f3ff,stroke:#7c3aed,stroke-width:2px;
-              `} />
-            )}
+            <MermaidChart chartCode={`
+            flowchart TD
+                A["/ Landing"] --> B["/auth 로그인·회원가입"]
+                B --> C["/main 대시보드"]
+                C --> D["/workflow 워크플로우 목록"]
+                D --> E["/workflow/new 새 캔버스"]
+                D --> F["/workflow/:workflowId 편집 캔버스"]
+                C --> G["/inter-setting 통합 설정"]
+                C --> H["/user 계정 설정"]
+                E --> I["React Flow Editor"]
+                F --> I
+                I --> J["AI Assistant Panel"]
+                style I fill:#fff7ed,stroke:#ea580c,stroke-width:2px;
+                style J fill:#f5f3ff,stroke:#7c3aed,stroke-width:2px;
+            `} />
           </div>
           <div className="card" style={{ flex: 0.8, justifyContent: 'center', padding: '25px' }}>
             <div className="card-title" style={{ fontSize: '1.9rem', lineHeight: 1.35 }}>
@@ -389,23 +385,21 @@ export default function App() {
         </div>
         <div className="slide-body" style={{ flexDirection: 'row', gap: '20px', alignItems: 'stretch' }}>
           <div className="diagram-container" style={{ flex: 1.2 }}>
-            {currentSlide === 8 && (
-              <MermaidChart chartCode={`
-              flowchart LR
-                  FE["Frontend"] --> API["Spring Boot API"]
-                  API --> AUTH["Auth / JWT"]
-                  API --> USER["User"]
-                  API --> CRED["Credential / BYOK"]
-                  API --> WF["Workflow"]
-                  API --> CHAT["Chat"]
-                  API --> WEBHOOK["Webhook"]
-                  WF --> CORE["workflow-core<br/>Execution Engine"]
-                  CORE --> PG["PostgreSQL"]
-                  CORE --> MG["MongoDB"]
-                  AUTH --> RD["Redis"]
-                  CHAT --> AG["AI Agent Server"]
-              `} />
-            )}
+            <MermaidChart chartCode={`
+            flowchart LR
+                FE["Frontend"] --> API["Spring Boot API"]
+                API --> AUTH["Auth / JWT"]
+                API --> USER["User"]
+                API --> CRED["Credential / BYOK"]
+                API --> WF["Workflow"]
+                API --> CHAT["Chat"]
+                API --> WEBHOOK["Webhook"]
+                WF --> CORE["workflow-core<br/>Execution Engine"]
+                CORE --> PG["PostgreSQL"]
+                CORE --> MG["MongoDB"]
+                AUTH --> RD["Redis"]
+                CHAT --> AG["AI Agent Server"]
+            `} />
           </div>
           <div className="card" style={{ flex: 0.8, justifyContent: 'center', padding: '25px' }}>
             <div className="card-title" style={{ fontSize: '1.9rem', lineHeight: 1.35 }}>
@@ -441,28 +435,26 @@ export default function App() {
         </div>
         <div className="slide-body">
           <div className="diagram-container">
-            {currentSlide === 9 && (
-              <MermaidChart chartCode={`
-              sequenceDiagram
-                  participant User
-                  participant Frontend
-                  participant Backend
-                  participant Runtime
-                  participant Agent
-                  participant DB
-                  User->>Frontend: 워크플로우 실행 요청
-                  Frontend->>Backend: POST /api/v1/workflows/{id}/execute
-                  Backend->>DB: 실행 레코드 PENDING 생성
-                  Backend->>Runtime: 비동기 실행 시작
-                  Runtime->>DB: MongoDB에서 nodes/edges 로드
-                  Runtime->>Runtime: TRIGGER부터 노드 순차 실행
-                  Runtime->>Agent: AI 노드 실행 요청
-                  Agent-->>Runtime: AI 실행 결과 반환
-                  Runtime->>DB: 노드별 실행 로그 저장
-                  Runtime->>DB: 실행 상태 SUCCESS/FAILED 저장
-                  Backend-->>Frontend: 실행 결과 조회 가능
-              `} />
-            )}
+            <MermaidChart chartCode={`
+            sequenceDiagram
+                participant User
+                participant Frontend
+                participant Backend
+                participant Runtime
+                participant Agent
+                participant DB
+                User->>Frontend: 워크플로우 실행 요청
+                Frontend->>Backend: POST /api/v1/workflows/{id}/execute
+                Backend->>DB: 실행 레코드 PENDING 생성
+                Backend->>Runtime: 비동기 실행 시작
+                Runtime->>DB: MongoDB에서 nodes/edges 로드
+                Runtime->>Runtime: TRIGGER부터 노드 순차 실행
+                Runtime->>Agent: AI 노드 실행 요청
+                Agent-->>Runtime: AI 실행 결과 반환
+                Runtime->>DB: 노드별 실행 로그 저장
+                Runtime->>DB: 실행 상태 SUCCESS/FAILED 저장
+                Backend-->>Frontend: 실행 결과 조회 가능
+            `} />
           </div>
         </div>
         <div className="slide-footer">
@@ -564,22 +556,20 @@ export default function App() {
         </div>
         <div className="slide-body" style={{ flexDirection: 'row', gap: '25px', alignItems: 'stretch' }}>
           <div className="diagram-container" style={{ flex: 1.1 }}>
-            {currentSlide === 11 && (
-              <MermaidChart chartCode={`
-              flowchart LR
-                  USER["User"] --> HTTPS["HTTPS"]
-                  HTTPS --> NGINX["NGINX + WAF"]
-                  NGINX --> FE["Frontend<br/>10.10.10.10"]
-                  NGINX --> BE["Backend<br/>10.10.10.11:8080"]
-                  BE --> REDIS["Redis"]
-                  BE --> PG["PostgreSQL"]
-                  BE --> AGENT["AI Agent"]
-                  BE --> MONGO["MongoDB"]
-                  GHA["GitHub Actions"] --> FE
-                  GHA --> BE
-                  GHA --> AGENT
-              `} />
-            )}
+            <MermaidChart chartCode={`
+            flowchart LR
+                USER["User"] --> HTTPS["HTTPS"]
+                HTTPS --> NGINX["NGINX + WAF"]
+                NGINX --> FE["Frontend<br/>10.10.10.10"]
+                NGINX --> BE["Backend<br/>10.10.10.11:8080"]
+                BE --> REDIS["Redis"]
+                BE --> PG["PostgreSQL"]
+                BE --> AGENT["AI Agent"]
+                BE --> MONGO["MongoDB"]
+                GHA["GitHub Actions"] --> FE
+                GHA --> BE
+                GHA --> AGENT
+            `} />
           </div>
           <div style={{ flex: 0.9, display: 'flex', flexDirection: 'column', gap: '15px', justifyContent: 'space-between' }}>
             <div className="card" style={{ padding: '20px', gap: '6px' }}>
