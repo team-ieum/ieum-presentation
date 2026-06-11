@@ -880,15 +880,6 @@ export default function App() {
         >
           <i className="fa-solid fa-chevron-right"></i>
         </button>
-
-        <button 
-          className="control-btn" 
-          onClick={() => window.print()}
-          title="PDF 내보내기"
-          style={{ marginLeft: '6px', backgroundColor: '#007ba7' }}
-        >
-          <i className="fa-solid fa-file-pdf"></i>
-        </button>
       </div>
     </div>
   );
