@@ -13,6 +13,8 @@ export default defineConfig({
         main: resolve(process.cwd(), 'index.html'),
         // 마케팅 발표자료 (신규)
         marketing: resolve(process.cwd(), 'marketing.html'),
+        // 졸작 중간발표 (2학기)
+        midterm: resolve(process.cwd(), 'midterm.html'),
       },
     },
   },
